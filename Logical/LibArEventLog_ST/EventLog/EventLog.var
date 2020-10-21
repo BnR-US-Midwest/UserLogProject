@@ -1,0 +1,13 @@
+(********************************************************************
+ * COPYRIGHT -- Bernecker + Rainer
+ ********************************************************************
+ * Program: EventLog
+ * File: EventLog.var
+ * Author: Bernecker + Rainer
+ * Created: June, 2015
+ ********************************************************************
+ * Local variables of program EventLog
+ ********************************************************************)
+VAR
+	EventLog : EventLog_typ; (*Event handling.*)
+END_VAR
