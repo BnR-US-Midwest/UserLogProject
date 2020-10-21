@@ -20,6 +20,6 @@
     <AutomationRuntime Version="B4.73" />
     <Build GccVersion="4.1.2" />
     <DefaultTargetMemory Tasks="UserROM" />
-    <Vc FirmwareVersion="V4.72.2" />
+    <Vc FirmwareVersion="" />
   </Configuration>
 </Cpu>
