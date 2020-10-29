@@ -11,5 +11,7 @@
     <Object Type="Library" Language="ANSIC" Description="Buffer events to be entered in the user logbook">UserLog</Object>
     <Object Type="Library" Language="IEC">Library</Object>
     <Object Type="Library" Language="binary" Description="The SYS_LIB library contains functions for memory management and operating system manipulation as well as hardware-specific functions.">sys_lib</Object>
+    <Object Type="Library" Language="ANSIC" Description="Miscellaneous math functions">MathTools</Object>
+    <Object Type="Library" Language="ANSIC" Description="Format strings for IEC programs">IecFrmtStr</Object>
   </Objects>
 </Package>
