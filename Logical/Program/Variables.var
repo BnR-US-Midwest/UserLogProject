@@ -1,0 +1,13 @@
+VAR
+	State : USINT;
+	ErrorState : USINT;
+	CmdLog : BOOL;
+	EventID : DINT;
+	Message : STRING[80];
+	DataBuffer : ARRAY[0..81] OF USINT;
+	SizeOfDataBuffer : UDINT;
+	InitBufferReturn : BOOL;
+	AddStringDataReturn : BOOL;
+	fbGetIdent : ArEventLogGetIdent;
+	fbWrite : ArEventLogWrite;
+END_VAR

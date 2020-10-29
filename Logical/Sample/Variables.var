@@ -1,0 +1,5 @@
+VAR
+	CmdGetInfo : BOOL;
+	LogBufferInfo : UserLogFifoBufferInfoType;
+	CmdCyclic : BOOL;
+END_VAR
