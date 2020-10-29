@@ -10,14 +10,41 @@ PROGRAM _INIT
 	
 	SizeOfDataBuffer := SIZEOF(DataBuffer);
 	Message := 'Hello world! My name is Tyler.';
+	StatusTaskName := GetName(ADR(sTaskName));
 	
 END_PROGRAM
 
 PROGRAM _CYCLIC
 	
 	CASE State OF
-	
+		// INIT
 		0:
+			// Prepare the get ident FB
+			fbGetIdent.Name := '$$arlogusr';
+			fbGetIdent.Execute := TRUE;
+			
+			// Go to the next state
+			State := 10;
+			
+		10:
+			// Wait for compeletion
+			IF fbGetIdent.Done THEN
+				// Reset the FB
+				fbGetIdent.Execute := FALSE;
+				
+				UserLogIdent := fbGetIdent.Ident;
+				
+				// Go to the next state
+				State := 20;
+				
+			ELSIF fbGetIdent.Error THEN
+				ErrorState := State;
+				State := 255;
+				
+			END_IF
+				
+		
+		1:
 			IF CmdLog THEN
 				CmdLog := FALSE;
 				ErrorState := 0;
@@ -39,7 +66,7 @@ PROGRAM _CYCLIC
 				
 			END_IF
 		
-		10:
+		11:
 			IF fbGetIdent.Done THEN
 				// Write to the logbook
 				fbWrite.Ident := fbGetIdent.Ident;
@@ -59,7 +86,7 @@ PROGRAM _CYCLIC
 				
 			END_IF
 		
-		20:
+		21:
 			IF fbWrite.Done THEN
 				
 				State := 0;
@@ -70,7 +97,7 @@ PROGRAM _CYCLIC
 			
 			END_IF
 			
-		30:
+		255:
 	
 	END_CASE
 	

@@ -1,0 +1,6 @@
+
+FUNCTION GetName : UINT
+	VAR_INPUT
+		TaskName : UDINT;
+	END_VAR
+END_FUNCTION

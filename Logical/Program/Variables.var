@@ -10,4 +10,7 @@ VAR
 	AddStringDataReturn : BOOL;
 	fbGetIdent : ArEventLogGetIdent;
 	fbWrite : ArEventLogWrite;
+	StatusTaskName : UINT;
+	sTaskName : STRING[31];
+	UserLogIdent : ArEventLogIdentType;
 END_VAR
