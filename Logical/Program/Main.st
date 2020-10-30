@@ -9,7 +9,6 @@
 PROGRAM _INIT
 	
 	SizeOfDataBuffer := SIZEOF(DataBuffer);
-	Message := 'Hello world! My name is Tyler.';
 	StatusTaskName := GetName(ADR(sTaskName));
 	
 END_PROGRAM
@@ -42,6 +41,28 @@ PROGRAM _CYCLIC
 				State := 255;
 				
 			END_IF
+			
+		20:
+			IF (ReadLogIndex <> WriteLogIndex OR LogBufferFull) AND OverrideRead THEN
+				
+				// Create the event ID
+				EventID := ArEventLogMakeEventID(LogBuffer[ReadLogIndex].LogEntry.Severity, 0, LogBuffer[ReadLogIndex].LogEntry.Code);
+				
+				// Write to the logbook
+				fbWrite.Ident			:= UserLogIdent;
+				fbWrite.EventID			:= EventID;
+				fbWrite.OriginRecordID	:= 0;
+				fbWrite.AddDataFormat	:= arEVENTLOG_ADDFORMAT_TEXT;
+				fbWrite.AddDataSize		:= brsstrlen(ADR(LogBuffer[ReadLogIndex].LogEntry.sMessage)) + 1;
+				fbWrite.AddData			:= ADR(LogBuffer[ReadLogIndex].LogEntry.sMessage);
+				fbWrite.ObjectID		:= LogBuffer[ReadLogIndex].sTaskName;
+				fbWrite.Execute			:= TRUE;
+				
+				ReadLogIndex := Math_WrapUSINT(ReadLogIndex + 1, 0, MAX_LOG_INDEX);
+				
+				State := 21;
+			
+			END_IF
 				
 		
 		1:
@@ -72,7 +93,7 @@ PROGRAM _CYCLIC
 				fbWrite.Ident := fbGetIdent.Ident;
 				fbWrite.EventID := EventID;
 				fbWrite.OriginRecordID := 0;
-				fbWrite.AddDataSize := brsstrlen(ADR(Message));
+				fbWrite.AddDataSize := 81;
 				fbWrite.AddDataFormat := arEVENTLOG_ADDFORMAT_TEXT;
 				fbWrite.AddData := ADR(Message);
 				fbWrite.ObjectID := 'Sample';
@@ -88,8 +109,14 @@ PROGRAM _CYCLIC
 		
 		21:
 			IF fbWrite.Done THEN
+				fbWrite.Execute := FALSE;
 				
-				State := 0;
+				// If the indexes match, reset the log buffer full flag
+				IF ReadLogIndex = WriteLogIndex AND LogBufferFull THEN
+					LogBufferFull := FALSE;
+				END_IF
+				
+				State := 20;
 				
 			ELSIF fbWrite.Error THEN
 				ErrorState := State;

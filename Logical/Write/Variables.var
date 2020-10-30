@@ -1,0 +1,11 @@
+VAR
+	CmdWrite : BOOL;
+	WriteCounter : INT;
+	Message : STRING[80];
+	Severity : USINT;
+	Code : UINT;
+	StatusTaskName : UINT;
+	NextWriteIndex : USINT;
+	sConstructMessage : STRING[80];
+	MessageArguments : FormatStringArgumentsType;
+END_VAR

@@ -8,5 +8,6 @@
     <Object Type="Package">LibArEventLog_ST</Object>
     <Object Type="Program" Language="IEC">Sample</Object>
     <Object Type="Program" Language="IEC">Program</Object>
+    <Object Type="Program" Language="IEC">Write</Object>
   </Objects>
 </Package>

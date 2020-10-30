@@ -13,4 +13,5 @@ VAR
 	StatusTaskName : UINT;
 	sTaskName : STRING[31];
 	UserLogIdent : ArEventLogIdentType;
+	OverrideRead : BOOL;
 END_VAR
