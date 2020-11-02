@@ -6,4 +6,5 @@ VAR
 	CyclicLogBuffer_0 : CyclicLogBuffer;
 	Info : UserLogBufferInfoType;
 	loop : USINT;
+	loopMax : USINT;
 END_VAR

@@ -15,15 +15,15 @@ PROGRAM _CYCLIC
 	IF CmdWrite THEN
 		CmdWrite := FALSE;
 		
-		FOR loop := 0 TO 11 DO
+		FOR loop := 0 TO loopMax DO
 			LogEvent(Severity, Code, Message);
 		END_FOR
 	END_IF
-	
-	GetBufferInfo(Info);
 
 	// Log buffered event entries
 	CyclicLogBuffer_0();
+	
+	GetBufferInfo(Info);
 	
 END_PROGRAM
 
