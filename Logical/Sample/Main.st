@@ -12,15 +12,14 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	
-	IF CmdGetInfo THEN
-		CmdGetInfo := FALSE;
-		GetLogBufferInfo(LogBufferInfo);
+	IF CmdWrite THEN
+		CmdWrite := FALSE;
+		
+		LogEvent(Severity, Code, Message);
 	END_IF
-	
-	IF CmdCyclic THEN
-		CmdCyclic := FALSE;
-		CyclicLogBufferedEntries();
-	END_IF
+
+	// Log buffered event entries
+	CyclicUserLogBuffer_0();
 	
 END_PROGRAM
 

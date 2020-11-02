@@ -3,7 +3,7 @@
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
     <Task Name="EventLog" Source="LibArEventLog_ST.EventLog.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Sample" Source="Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
+    <Task Name="Sample" Source="Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Write" Source="Write.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Program" Source="Program.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
@@ -31,7 +31,7 @@
     <LibraryObject Name="ArEventLog" Source="Libraries.ArEventLog.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="runtime" Source="Libraries.runtime.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="AsBrStr" Source="Libraries.AsBrStr.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="UserLog" Source="Libraries.UserLog.lby" Memory="UserROM" Language="ANSIC" Debugging="true" Disabled="true" />
+    <LibraryObject Name="UserLog" Source="Libraries.UserLog.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="Library" Source="Libraries.Library.lby" Memory="UserROM" Language="IEC" Debugging="true" />
     <LibraryObject Name="sys_lib" Source="Libraries.sys_lib.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="MathTools" Source="Libraries.MathTools.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
