@@ -15,7 +15,9 @@ PROGRAM _CYCLIC
 	IF CmdWrite THEN
 		CmdWrite := FALSE;
 		
-		LogEvent(Severity, Code, Message);
+		FOR loop := 0 TO 11 DO
+			LogEvent(Severity, Code, Message);
+		END_FOR
 	END_IF
 	
 	GetBufferInfo(Info);

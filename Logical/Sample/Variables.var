@@ -1,10 +1,9 @@
 VAR
-	CmdGetInfo : BOOL;
-	CmdCyclic : BOOL;
 	CmdWrite : BOOL;
 	Message : STRING[80];
 	Severity : UserLogSeverityEnum;
 	Code : UINT;
 	CyclicLogBuffer_0 : CyclicLogBuffer;
 	Info : UserLogBufferInfoType;
+	loop : USINT;
 END_VAR
