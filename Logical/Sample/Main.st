@@ -17,9 +17,11 @@ PROGRAM _CYCLIC
 		
 		LogEvent(Severity, Code, Message);
 	END_IF
+	
+	GetBufferInfo(Info);
 
 	// Log buffered event entries
-	CyclicUserLogBuffer_0();
+	CyclicLogBuffer_0();
 	
 END_PROGRAM
 
