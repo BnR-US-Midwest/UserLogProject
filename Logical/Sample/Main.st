@@ -3,7 +3,8 @@
  * Author:    Tyler Matijevich
  * Created:   October 20, 2020/20:34 
 ********************************************************************************
- * Description: A short description 
+ * Description: Demonstrate the functions and function blocks of the UserLog 
+ library
 ********************************************************************************)
 
 PROGRAM _INIT
