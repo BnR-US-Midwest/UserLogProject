@@ -8,22 +8,44 @@
 
 PROGRAM _INIT
 	
+	Severity	:= USER_LOG_SEVERITY_SUCCESS;
+	Code 		:= 1001;
+	Message 	:= 'This message will be written to the user logbook';
+	
+	loopMax		:= 12;
+
 END_PROGRAM
 
 PROGRAM _CYCLIC
 	
+	// Write a single event to the user logbook
 	IF CmdWrite THEN
 		CmdWrite := FALSE;
-		
-		FOR loop := 0 TO loopMax DO
-			LogEvent(Severity, Code, Message);
+		LogEvent(Severity, Code, Message);
+	END_IF
+	
+	// Write a burst of events to the user logbook. If it exceeds the buffer size, the events will be lost
+	IF CmdBurst THEN
+		CmdBurst := FALSE;
+		// If loopMax is greater than USER_LOG_BUFFER_SIZE then (loopMax - USER_LOG_BUFFER_SIZE) number of entries will be lost
+		// This can be observed in the buffer info structure
+		// Increase USER_LOG_BUFFER_SIZE if entries are found to be lost
+		FOR loop := 1 TO loopMax DO
+			ConstructBurstMessage := 'Event %i of %i';
+			BurstMessageArguments.i[0] := loop;
+			BurstMessageArguments.i[1] := loopMax;
+			IecFormatString(ADR(FormattedBurstMessage), SIZEOF(FormattedBurstMessage), ADR(ConstructBurstMessage), ADR(BurstMessageArguments));
+			BurstSeverity 	:= loop MOD 4;
+			BurstCode		:= 1001 + loop;
+			LogEvent(BurstSeverity, BurstCode, FormattedBurstMessage);
 		END_FOR
 	END_IF
 
 	// Log buffered event entries
 	CyclicLogBuffer_0();
 	
-	GetBufferInfo(Info);
+	// Extract information about 
+	GetBufferInfo(BufferInfo);
 	
 END_PROGRAM
 

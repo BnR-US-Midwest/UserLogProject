@@ -2,10 +2,8 @@
 <?AutomationStudio Version=4.7.4.67 SP?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
-    <Task Name="EventLog" Source="LibArEventLog_ST.EventLog.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Sample" Source="Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Write" Source="Write.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Program" Source="Program.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="EventLog" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
@@ -32,11 +30,11 @@
     <LibraryObject Name="runtime" Source="Libraries.runtime.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="AsBrStr" Source="Libraries.AsBrStr.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="UserLog" Source="Libraries.UserLog.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
-    <LibraryObject Name="Library" Source="Libraries.Library.lby" Memory="UserROM" Language="IEC" Debugging="true" />
     <LibraryObject Name="sys_lib" Source="Libraries.sys_lib.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="MathTools" Source="Libraries.MathTools.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="IecFrmtStr" Source="Libraries.IecFrmtStr.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="asieccon" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="astime" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MathTools" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="Library" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>
