@@ -9,10 +9,12 @@
 
 PROGRAM _INIT
 	
+	// Initalize inputs to the LogEvent function
 	Severity	:= USER_LOG_SEVERITY_SUCCESS;
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
 	
+	// Initialize # of messages written in one cycle for the burst sample (line 31)
 	loopMax		:= 12;
 
 END_PROGRAM
