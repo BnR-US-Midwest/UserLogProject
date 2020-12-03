@@ -7,8 +7,8 @@
 This is a sample Automation Studio project demonstrating the function of the UserLog library. This repository also serves the developent of the UserLog library with [released updates](https://github.com/as-libs/LibUserLog/releases).
 
 - Clone the project: `git clone git@github.com:as-libs/LibUserLog.git`
-- [Download UserLog library](https://github.com/as-libs/LibUserLog/releases/download/0.1.2/UserLog_V0.01.2.zip)
-- [Download LibUserLog sample project](https://github.com/as-libs/LibUserLog/releases/download/0.1.2/LibUserLog.zip)
+- [Download UserLog library](https://github.com/as-libs/LibUserLog/releases/download/0.1.3/UserLog_V0.01.3.zip)
+- [Download LibUserLog sample project](https://github.com/as-libs/LibUserLog/releases/download/0.1.3/LibUserLog.zip)
 
 ## Automation Studio
 Version 4.7.5.60 SP
