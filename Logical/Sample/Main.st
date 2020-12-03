@@ -16,6 +16,9 @@ PROGRAM _INIT
 	
 	// Initialize # of messages written in one cycle for the burst sample (line 31)
 	loopMax		:= 12;
+	
+	// Set the severity threshold
+	CyclicLogBuffer_0.SeverityThreshold := USER_LOG_SEVERITY_SUCCESS; // 0 - all messages logged, increase to filter
 
 END_PROGRAM
 
@@ -38,14 +41,14 @@ PROGRAM _CYCLIC
 			BurstMessageArguments.i[0] := loop;
 			BurstMessageArguments.i[1] := loopMax;
 			IecFormatString(ADR(FormattedBurstMessage), SIZEOF(FormattedBurstMessage), ADR(ConstructBurstMessage), ADR(BurstMessageArguments));
-			BurstSeverity 	:= loop MOD 4;
+			BurstSeverity 	:= (loop - 1) MOD 4;
 			BurstCode		:= 1001 + loop;
 			LogEvent(BurstSeverity, BurstCode, FormattedBurstMessage);
 		END_FOR
 	END_IF
 
 	// Log buffered event entries
-	CyclicLogBuffer_0(SeverityThreshold := SeverityThreshold);
+	CyclicLogBuffer_0();
 	
 	// Extract information about 
 	GetBufferInfo(BufferInfo);
