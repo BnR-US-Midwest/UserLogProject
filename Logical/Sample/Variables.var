@@ -4,6 +4,7 @@ VAR
 	Severity : UserLogSeverityEnum;
 	Code : UINT;
 	CyclicLogBuffer_0 : CyclicLogBuffer;
+	SeverityThreshold : UserLogSeverityEnum;
 	BufferInfo : UserLogBufferInfoType;
 END_VAR
 (*Burst example*)

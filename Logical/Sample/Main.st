@@ -45,7 +45,7 @@ PROGRAM _CYCLIC
 	END_IF
 
 	// Log buffered event entries
-	CyclicLogBuffer_0();
+	CyclicLogBuffer_0(SeverityThreshold := SeverityThreshold);
 	
 	// Extract information about 
 	GetBufferInfo(BufferInfo);
