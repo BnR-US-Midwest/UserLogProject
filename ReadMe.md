@@ -26,3 +26,13 @@ ACP10 ARNC0				| n/d 				| x
 mapp Control 			| n/d 				| x 
 mapp Cockpit 			| n/d 				| x 
 Safety Release 			| n/d 				| x 
+
+## Dependencies
+- ArEventLog
+	- runtime
+- AsBrStr
+- sys_lib
+	- runtime
+
+## Recommendations
+- IecFrmtStr
