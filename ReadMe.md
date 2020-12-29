@@ -41,7 +41,7 @@ Perform an offline installation to ARsim when first opening the LibUserLog sampl
 5. Set CmdBurst to TRUE.
 	- The burst test demonstrates how the log buffer handles multiple log messages in a single program scan.
 
-![Logger example](Logger2020-12-29_12.14.24.png)
+![Logger example](Logger2020-12-29_13.57.29.png)
 
 **Note:** Adjust `USER_LOG_BUFFER_SIZE` under `UserLog\Constants.var` to a value suitable for your application. (Default is 10)
 
