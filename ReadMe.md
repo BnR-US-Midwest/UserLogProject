@@ -9,7 +9,7 @@ A sample Automation Studio project demonstrating the UserLog library. This repos
 
 ## UserLog
 
-Log messages are written to their logbook asynchronously and taken multiple program scans to complete. The UserLog library buffers all log messages added by the `LogEvent` function to be automatically written to the user logbook.
+Log messages are written to their logbook asynchronously and take multiple program scans to complete. The UserLog library buffers all log messages added by the `LogEvent` function to be automatically written to the user logbook.
 
 ```
 // Initalize inputs to the LogEvent function
