@@ -1,5 +1,5 @@
 /*********************************************************************************
- * Copyright: B&R Industrial Automation GmbH 
+ * File:      LogEvent.c
  * Author:    Tyler Matijevich
  * Created:   October 31, 2020/14:42 
  *********************************************************************************/ 
@@ -37,7 +37,7 @@ DINT LogEvent(enum UserLogSeverityEnum Severity, UINT Code, STRING* sMessage){
 			Buffer[Info.WriteIndex].Severity = Severity;
 		} else {
 			// Entry is ignored
-			Info.NumEntriesIgnored++;
+			Info.NumEntriesSuppressed++;
 			return USER_LOG_ERROR_NONE;
 		}
 	} else {
