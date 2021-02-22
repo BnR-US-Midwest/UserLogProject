@@ -9,7 +9,7 @@
 
 PROGRAM _INIT
 	
-	// Initalize inputs to the LogEvent function
+	// Initalize inputs to the LogMessage function
 	Severity	:= USER_LOG_SEVERITY_SUCCESS;
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
@@ -27,7 +27,7 @@ PROGRAM _CYCLIC
 	// Write a single event to the user logbook
 	IF CmdWrite THEN
 		CmdWrite := FALSE;
-		LogEvent(Severity, Code, Message);
+		LogMessage(Severity, Code, Message);
 	END_IF
 	
 	// Write a burst of events to the user logbook. If it exceeds the buffer size, the events will be lost
@@ -43,7 +43,7 @@ PROGRAM _CYCLIC
 			IecFormatString(ADR(FormattedBurstMessage), SIZEOF(FormattedBurstMessage), ADR(ConstructBurstMessage), ADR(BurstMessageArguments));
 			BurstSeverity 	:= (loop - 1) MOD 4;
 			BurstCode		:= 1001 + loop;
-			LogEvent(BurstSeverity, BurstCode, FormattedBurstMessage);
+			LogMessage(BurstSeverity, BurstCode, FormattedBurstMessage);
 		END_FOR
 	END_IF
 
