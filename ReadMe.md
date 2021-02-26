@@ -9,10 +9,10 @@ A sample Automation Studio project demonstrating the UserLog library. This repos
 
 ## UserLog
 
-Log messages are written to their logbook asynchronously and take multiple program scans to complete. The UserLog library buffers all log messages added by the `LogEvent` function to be automatically written to the user logbook.
+Log messages are written to their logbook asynchronously and take multiple program scans to complete. The UserLog library buffers all log messages added by the `LogMessage` function to be automatically written to the user logbook.
 
 ```
-// Initalize inputs to the LogEvent function
+// Initalize inputs to the LogMessage function
 Severity    := USER_LOG_SEVERITY_SUCCESS;
 Code        := 1001;
 Message     := 'This message will be written to the user logbook';
@@ -20,7 +20,7 @@ Message     := 'This message will be written to the user logbook';
 // Write a single event to the user logbook
 IF CmdWrite THEN
 	CmdWrite := FALSE;
-	LogEvent(Severity, Code, Message);
+	LogMessage(Severity, Code, Message);
 END_IF
 ```
 
