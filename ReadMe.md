@@ -50,7 +50,7 @@ Perform an offline installation to ARsim when first opening the LibUserLog sampl
 - [Setup gitignore for your repository](https://gist.github.com/tmatijevich/453436f1e6abc62a3d052d9b03f9db58)
 
 ## Automation Studio
-Version 4.9.2.46
+Version 4.9.3.144 SP
 
 ## Automation Runtime
 
