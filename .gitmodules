@@ -1,0 +1,3 @@
+[submodule "Logical/Libraries/UserLog"]
+	path = Logical/Libraries/UserLog
+	url = ssh://git@ssh.github.com:443/tmatijevich/UserLog.git
