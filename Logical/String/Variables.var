@@ -1,0 +1,6 @@
+VAR
+	str1 : STRING[10];
+	str2 : STRING[12];
+	mem1 : ARRAY[0..10] OF USINT;
+	mem2 : ARRAY[0..12] OF USINT;
+END_VAR

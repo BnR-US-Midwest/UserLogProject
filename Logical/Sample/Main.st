@@ -10,7 +10,7 @@
 PROGRAM _INIT
 	
 	// Initalize inputs to the LogMessage function
-	Severity	:= USER_LOG_SEVERITY_SUCCESS;
+	Severity	:= USERLOG_SEVERITY_SUCCESS;
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
 	
@@ -18,7 +18,7 @@ PROGRAM _INIT
 	loopMax		:= 12;
 	
 	// Set the severity threshold
-	CyclicLogBuffer_0.SeverityThreshold := USER_LOG_SEVERITY_SUCCESS; // 0 - all messages logged, increase to filter
+	CyclicLogBuffer_0.SeverityThreshold := USERLOG_SEVERITY_SUCCESS; // 0 - all messages logged, increase to filter
 
 END_PROGRAM
 
@@ -37,10 +37,9 @@ PROGRAM _CYCLIC
 		// This can be observed in the buffer info structure
 		// Increase USER_LOG_BUFFER_SIZE if entries are found to be lost
 		FOR loop := 1 TO loopMax DO
-			ConstructBurstMessage := 'Event %i of %i';
 			BurstMessageArguments.i[0] := loop;
 			BurstMessageArguments.i[1] := loopMax;
-			IecFormatString(ADR(FormattedBurstMessage), SIZEOF(FormattedBurstMessage), ADR(ConstructBurstMessage), ADR(BurstMessageArguments));
+			IecFormatString(FormattedBurstMessage, SIZEOF(FormattedBurstMessage), 'Event %i of %i', BurstMessageArguments);
 			BurstSeverity 	:= (loop - 1) MOD 4;
 			BurstCode		:= 1001 + loop;
 			LogMessage(BurstSeverity, BurstCode, FormattedBurstMessage);

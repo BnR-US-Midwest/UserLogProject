@@ -9,7 +9,6 @@ END_VAR
 (*Burst example*)
 VAR
 	CmdBurst : BOOL;
-	ConstructBurstMessage : STRING[80];
 	BurstMessageArguments : FormatStringArgumentsType;
 	FormattedBurstMessage : STRING[80];
 	BurstSeverity : UserLogSeverityEnum;

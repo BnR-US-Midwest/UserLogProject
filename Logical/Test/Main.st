@@ -10,8 +10,8 @@ PROGRAM _CYCLIC
 		FOR IndexEntries := 1 TO Entries DO
 			Args.i[0] := IndexScans + 1;
 			Args.i[1] := IndexEntries;
-			IecFormatString(ADR(Message), SIZEOF(Message), ADR('Scan %i entry %i'), ADR(Args));
-			LogMessage(USER_LOG_SEVERITY_INFORMATION, 1, Message);
+			IecFormatString(Message, SIZEOF(Message), 'Scan %i entry %i', Args);
+			LogMessage(1, 1, Message);
 		END_FOR
 		
 		IndexScans := IndexScans + 1;

@@ -7,5 +7,6 @@
     <Object Type="Package" Description="Global libraries">Libraries</Object>
     <Object Type="Program" Language="IEC" Description="UserLog library sample code">Sample</Object>
     <Object Type="Program" Language="IEC">Test</Object>
+    <Object Type="Program" Language="ANSIC">String</Object>
   </Objects>
 </Package>
