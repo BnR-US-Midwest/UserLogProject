@@ -1,3 +1,6 @@
 [submodule "Logical/Libraries/UserLog"]
 	path = Logical/Libraries/UserLog
 	url = ssh://git@ssh.github.com:443/tmatijevich/UserLog.git
+[submodule "Logical/Libraries/IecString"]
+	path = Logical/Libraries/IecString
+	url = ssh://git@ssh.github.com:443/tmatijevich/IecString.git
