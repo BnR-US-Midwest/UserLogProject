@@ -1,7 +1,7 @@
 
 PROGRAM _INIT
 	(* Insert code here *)
-	 
+	LogMessage(severity := USERLOG_SEVERITY_SUCCESS, code := 1234, message := 'Hello World!');
 END_PROGRAM
 
 PROGRAM _CYCLIC

@@ -14,11 +14,8 @@ PROGRAM _INIT
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
 	
-	// Initialize # of messages written in one cycle for the burst sample (line 31)
-	loopMax		:= 12;
-	
 	// Set the severity threshold
-	CyclicLogBuffer_0.SeverityThreshold := USERLOG_SEVERITY_SUCCESS; // 0 - all messages logged, increase to filter
+	fbCyclicLogBuffer.SeverityThreshold := USERLOG_SEVERITY_SUCCESS; // 0 - all messages logged, increase to filter
 
 END_PROGRAM
 
@@ -31,23 +28,23 @@ PROGRAM _CYCLIC
 	END_IF
 	
 	// Write a burst of events to the user logbook. If it exceeds the buffer size, the events will be lost
-	IF CmdBurst THEN
-		CmdBurst := FALSE;
+	IF Run THEN
+		Run := FALSE;
 		// If loopMax is greater than USER_LOG_BUFFER_SIZE then (loopMax - USER_LOG_BUFFER_SIZE) number of entries will be lost
 		// This can be observed in the buffer info structure
 		// Increase USER_LOG_BUFFER_SIZE if entries are found to be lost
-		FOR loop := 1 TO loopMax DO
-			BurstMessageArguments.i[0] := loop;
-			BurstMessageArguments.i[1] := loopMax;
-			IecFormatString(FormattedBurstMessage, SIZEOF(FormattedBurstMessage), 'Event %i of %i', BurstMessageArguments);
-			BurstSeverity 	:= (loop - 1) MOD 4;
-			BurstCode		:= 1001 + loop;
-			LogMessage(BurstSeverity, BurstCode, FormattedBurstMessage);
+		FOR Index := 1 TO NumOfMessages DO
+			FormatArgs.i[0] := Index;
+			FormatArgs.i[1] := NumOfMessages;
+			IecFormatString(MyMessage, SIZEOF(MyMessage), 'Event %i of %i', FormatArgs);
+			MySeverity := (Index - 1) MOD 4;
+			MyCode := 1000 + Index;
+			LogMessage(MySeverity, MyCode, MyMessage);
 		END_FOR
 	END_IF
 
 	// Log buffered event entries
-	CyclicLogBuffer_0();
+	fbCyclicLogBuffer();
 	
 	// Extract information about 
 	GetBufferInfo(BufferInfo);

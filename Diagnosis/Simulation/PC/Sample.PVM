@@ -1,29 +1,29 @@
 WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=Sample 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=16 ASCIIString=0
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=20 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
-                       CyclicLogBuffer_0                          CyclicLogBuffer    0 "                                                               *"    0   24    1    0    1    1         
+                       fbCyclicLogBuffer                          CyclicLogBuffer    0 "                                                               *"    0   24    1    0    1    1         
                        SeverityThreshold                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,USER
 
                               ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                  ErrorID                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,USER
 
                               BufferInfo                    UserLogBufferInfoType    0 "                                                               *"    0   24    1    0    1    1         
-                                   ident                                    UDINT    0 "                                                               0"    1    7    1   10    0    0        v
-                              writeIndex                                    USINT    0 "                                                               0"    1    5    1   10    0    0         
-                               readIndex                                    USINT    0 "                                                               0"    1    5    1   10    0    0         
-                                   state                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,USER
+                                   ident                                    UDINT    0 "                                                        61773772"    1    7    1   10    0    0        v
+                              writeIndex                                    USINT    0 "                                                               3"    1    5    1   10    0    0         
+                               readIndex                                    USINT    0 "                                                               3"    1    5    1   10    0    0         
+                                   state                                     DINT    0 "                                                               1"    1    4    1   10    0    0 e,0,USER
 
                                     full                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                              bufferCount                                    USINT    0 "                                                               0"    1    5    1   10    0    0         
-                             loggedCount                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
-                               lostCount                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                             loggedCount                                    UDINT    0 "                                                              16"    1    7    1   10    0    0         
+                               lostCount                                    UDINT    0 "                                                               2"    1    7    1   10    0    0         
                          suppressedCount                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
                             sysLibStatus                                     UINT    0 "                                                               0"    1    6    1   10    0    0         
                       arEventLogStatusID                                     DINT    0 "                                                               0"    1    4    1   10    0    0         
                                 CmdWrite                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
                                 Severity                                     DINT    0 "                                                               0"    0    4    1   10    1    0 e,0,USER
 
-                                    Code                                     UINT    0 "                                                               0"    0    6    1   10    1    0         
-                                 Message                               STRING[80]    0 "                                                              ''"    0    9   81    1    1    0         
-                                CmdBurst                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
-                                 loopMax                                    USINT    0 "                                                               0"    0    5    1   10    1    0         
+                                    Code                                     UINT    0 "                                                            1001"    0    6    1   10    1    0         
+                                 Message                               STRING[80]    0 "              'This message will be written to the user logbook'"    0    9   81    1    1    0         
+                                     Run                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
+                           NumOfMessages                                    USINT    0 "                                                              12"    0    5    1   10    1    0         

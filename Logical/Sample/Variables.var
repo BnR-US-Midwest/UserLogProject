@@ -3,16 +3,16 @@ VAR
 	Message : STRING[80];
 	Severity : UserLogSeverityEnum;
 	Code : UINT;
-	CyclicLogBuffer_0 : CyclicLogBuffer;
+	fbCyclicLogBuffer : CyclicLogBuffer;
 	BufferInfo : UserLogBufferInfoType;
 END_VAR
 (*Burst example*)
 VAR
-	CmdBurst : BOOL;
-	BurstMessageArguments : FormatStringArgumentsType;
-	FormattedBurstMessage : STRING[80];
-	BurstSeverity : UserLogSeverityEnum;
-	BurstCode : UINT;
-	loop : USINT;
-	loopMax : USINT;
+	Run : BOOL;
+	FormatArgs : FormatStringArgumentsType;
+	MyMessage : STRING[80];
+	MySeverity : UserLogSeverityEnum;
+	MyCode : UINT;
+	Index : USINT;
+	NumOfMessages : USINT := 12;
 END_VAR
