@@ -13,9 +13,6 @@ PROGRAM _INIT
 	Severity	:= USERLOG_SEVERITY_SUCCESS;
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
-	
-	// Set the severity threshold
-	fbCyclicLogBuffer.SeverityThreshold := USERLOG_SEVERITY_SUCCESS; // 0 - all messages logged, increase to filter
 
 END_PROGRAM
 
@@ -42,12 +39,9 @@ PROGRAM _CYCLIC
 			LogMessage(MySeverity, MyCode, MyMessage);
 		END_FOR
 	END_IF
-
-	// Log buffered event entries
-	fbCyclicLogBuffer();
 	
-	// Extract information about 
-	GetBufferInfo(BufferInfo);
+	SetThreshold(SeverityThreshold);
+	GetLogInfo(LogInfo);
 	
 END_PROGRAM
 
