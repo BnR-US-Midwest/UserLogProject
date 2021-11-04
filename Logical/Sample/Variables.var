@@ -13,6 +13,6 @@ VAR
 	MySeverity : UserLogSeverityEnum;
 	MyCode : UINT;
 	Index : USINT;
-	NumOfMessages : USINT := 12;
-	SeverityThreshold : UserLogSeverityEnum;
+	NumOfMessages : USINT := 24;
+	MyVerbosityLevel : UserLogSeverityEnum;
 END_VAR

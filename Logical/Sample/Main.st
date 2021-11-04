@@ -13,6 +13,8 @@ PROGRAM _INIT
 	Severity	:= USERLOG_SEVERITY_SUCCESS;
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
+	
+	MyVerbosityLevel := USERLOG_SEVERITY_DEBUG;
 
 END_PROGRAM
 
@@ -27,20 +29,31 @@ PROGRAM _CYCLIC
 	// Write a burst of events to the user logbook. If it exceeds the buffer size, the events will be lost
 	IF Run THEN
 		Run := FALSE;
-		// If loopMax is greater than USER_LOG_BUFFER_SIZE then (loopMax - USER_LOG_BUFFER_SIZE) number of entries will be lost
-		// This can be observed in the buffer info structure
-		// Increase USER_LOG_BUFFER_SIZE if entries are found to be lost
+		// If loopMax is greater than USERLOG_MAX_MESSAGES then (loopMax - USERLOG_MAX_MESSAGES) number of entries will be lost
+		// This can be observed in the log info structure
+		// Increase USERLOG_MAX_MESSAGES if entries are found to be lost
 		FOR Index := 1 TO NumOfMessages DO
+			// Setup
+			SetVebosityLevel(MyVerbosityLevel);
+			MySeverity := (Index - 1) MOD 6;
+			MyCode := 1000 + Index;
+			// Format
 			FormatArgs.i[0] := Index;
 			FormatArgs.i[1] := NumOfMessages;
-			IecFormatString(MyMessage, SIZEOF(MyMessage), 'Event %i of %i', FormatArgs);
-			MySeverity := (Index - 1) MOD 4;
-			MyCode := 1000 + Index;
+			CASE MySeverity OF
+				USERLOG_SEVERITY_CRITICAL: 		FormatArgs.s[0] := 'Critical';
+				USERLOG_SEVERITY_ERROR: 		FormatArgs.s[0] := 'Error';
+				USERLOG_SEVERITY_WARNING: 		FormatArgs.s[0] := 'Warning';
+				USERLOG_SEVERITY_INFORMATION: 	FormatArgs.s[0] := 'Infomration';
+				USERLOG_SEVERITY_SUCCESS: 		FormatArgs.s[0] := 'Success';
+				USERLOG_SEVERITY_DEBUG: 		FormatArgs.s[0] := 'Debug';
+			END_CASE
+			IecFormatString(MyMessage, SIZEOF(MyMessage), 'Event %i of %i %s', FormatArgs);
+			// Log
 			LogMessage(MySeverity, MyCode, MyMessage);
 		END_FOR
 	END_IF
 	
-	SetThreshold(SeverityThreshold);
 	GetLogInfo(LogInfo);
 	
 END_PROGRAM
