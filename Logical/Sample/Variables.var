@@ -14,5 +14,5 @@ VAR
 	MyCode : UINT;
 	Index : USINT;
 	NumOfMessages : USINT := 24;
-	MyVerbosityLevel : UserLogSeverityEnum;
+	MyVerbosityLevel : UserLogSeverityEnum := USERLOG_SEVERITY_DEBUG;
 END_VAR

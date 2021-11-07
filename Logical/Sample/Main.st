@@ -13,8 +13,6 @@ PROGRAM _INIT
 	Severity	:= USERLOG_SEVERITY_SUCCESS;
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
-	
-	MyVerbosityLevel := USERLOG_SEVERITY_DEBUG;
 
 END_PROGRAM
 
@@ -34,7 +32,7 @@ PROGRAM _CYCLIC
 		// Increase USERLOG_MAX_MESSAGES if entries are found to be lost
 		FOR Index := 1 TO NumOfMessages DO
 			// Setup
-			SetVebosityLevel(MyVerbosityLevel);
+			SetVerbosityLevel(MyVerbosityLevel);
 			MySeverity := (Index - 1) MOD 6;
 			MyCode := 1000 + Index;
 			// Format
@@ -48,13 +46,13 @@ PROGRAM _CYCLIC
 				USERLOG_SEVERITY_SUCCESS: 		FormatArgs.s[0] := 'Success';
 				USERLOG_SEVERITY_DEBUG: 		FormatArgs.s[0] := 'Debug';
 			END_CASE
-			IecFormatString(MyMessage, SIZEOF(MyMessage), 'Event %i of %i %s', FormatArgs);
+			IecFormatString(MyMessage, SIZEOF(MyMessage), 'Event: %i of %i Severity: %s', FormatArgs);
 			// Log
 			LogMessage(MySeverity, MyCode, MyMessage);
 		END_FOR
 	END_IF
 	
-	GetLogInfo(LogInfo);
+	GetUserLogInfo(LogInfo);
 	
 END_PROGRAM
 
