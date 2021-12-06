@@ -4,6 +4,7 @@ VAR
 	Severity : UserLogSeverityEnum;
 	Code : UINT;
 	LogInfo : UserLogInfoType;
+	InitReturn : DINT;
 END_VAR
 (*Burst example*)
 VAR

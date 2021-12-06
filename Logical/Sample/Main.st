@@ -13,6 +13,8 @@ PROGRAM _INIT
 	Severity	:= USERLOG_SEVERITY_SUCCESS;
 	Code 		:= 1001;
 	Message 	:= 'This message will be written to the user logbook';
+	
+	InitReturn 	:= CreateCustomLogbook('MyLog', 200_000);
 
 END_PROGRAM
 
@@ -22,6 +24,7 @@ PROGRAM _CYCLIC
 	IF CmdWrite THEN
 		CmdWrite := FALSE;
 		LogMessage(Severity, Code, Message);
+		CustomMessage(Severity, Code, 'This message will be written to the MyLog logbook', 'MyLog', 1);
 	END_IF
 	
 	// Write a burst of events to the user logbook. If it exceeds the buffer size, the events will be lost
