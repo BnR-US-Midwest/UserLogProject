@@ -10,9 +10,8 @@
 PROGRAM _INIT
 	
 	// Initalize inputs to the LogMessage function
-	Severity	:= USERLOG_SEVERITY_SUCCESS;
-	Code 		:= 1001;
-	Message 	:= 'This message will be written to the user logbook';
+	MySeverity	:= USERLOG_SEVERITY_SUCCESS;
+	MyCode 		:= 1001;
 	
 	InitReturn 	:= CreateCustomLogbook('MyLog', 200_000);
 
@@ -20,14 +19,14 @@ END_PROGRAM
 
 PROGRAM _CYCLIC
 	
-	// Write a single event to the user logbook
+	// Write a single event to the User and custom logbook
 	IF CmdWrite THEN
 		CmdWrite := FALSE;
-		LogMessage(Severity, Code, Message);
-		CustomMessage(Severity, Code, 'This message will be written to the MyLog logbook', 'MyLog', 1);
+		LogMessage(MySeverity, MyCode, 'This message will be written to the User logbook', FormatArgs);
+		CustomMessage(MySeverity, MyCode, 'This message will be written to the MyLog logbook', FormatArgs, 'MyLog', 1);
 	END_IF
 	
-	// Write a burst of events to the user logbook. If it exceeds the buffer size, the events will be lost
+	// Write a burst of events to the user logbook. If it exceeds the max count, the events will be lost
 	IF Run THEN
 		Run := FALSE;
 		// If loopMax is greater than USERLOG_MAX_MESSAGES then (loopMax - USERLOG_MAX_MESSAGES) number of entries will be lost
@@ -49,9 +48,8 @@ PROGRAM _CYCLIC
 				USERLOG_SEVERITY_SUCCESS: 		FormatArgs.s[0] := 'Success';
 				USERLOG_SEVERITY_DEBUG: 		FormatArgs.s[0] := 'Debug';
 			END_CASE
-			IecFormatString(MyMessage, SIZEOF(MyMessage), 'Event: %i of %i Severity: %s', FormatArgs);
 			// Log
-			LogMessage(MySeverity, MyCode, MyMessage);
+			LogMessage(MySeverity, MyCode, 'Event: %i of %i Severity: %s', FormatArgs);
 		END_FOR
 	END_IF
 	

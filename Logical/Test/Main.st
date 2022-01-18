@@ -1,7 +1,7 @@
 
 PROGRAM _INIT
 	(* Insert code here *)
-	LogMessage(severity := USERLOG_SEVERITY_SUCCESS, code := 1234, message := 'Hello World!');
+	LogMessage(severity := USERLOG_SEVERITY_SUCCESS, code := 1234, message := 'Hello World!', Args);
 END_PROGRAM
 
 PROGRAM _CYCLIC
@@ -10,8 +10,7 @@ PROGRAM _CYCLIC
 		FOR IndexEntries := 1 TO Entries DO
 			Args.i[0] := IndexScans + 1;
 			Args.i[1] := IndexEntries;
-			IecFormatString(Message, SIZEOF(Message), 'Scan %i entry %i', Args);
-			LogMessage(1, 1, Message);
+			LogMessage(1, 1, 'Scan %i entry %i', Args);
 		END_FOR
 		
 		IndexScans := IndexScans + 1;

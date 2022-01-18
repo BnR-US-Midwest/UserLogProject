@@ -1,8 +1,5 @@
 VAR
 	CmdWrite : BOOL;
-	Message : STRING[80];
-	Severity : UserLogSeverityEnum;
-	Code : UINT;
 	LogInfo : UserLogInfoType;
 	InitReturn : DINT;
 END_VAR
@@ -10,7 +7,6 @@ END_VAR
 VAR
 	Run : BOOL;
 	FormatArgs : FormatStringArgumentsType;
-	MyMessage : STRING[80];
 	MySeverity : UserLogSeverityEnum;
 	MyCode : UINT;
 	Index : USINT;

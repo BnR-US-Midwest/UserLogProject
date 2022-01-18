@@ -4,7 +4,5 @@ VAR
 	Scans : UINT;
 	IndexEntries : UINT;
 	IndexScans : USINT;
-	Message : STRING[80];
 	Args : FormatStringArgumentsType;
 END_VAR
-(*ST Usage*)
