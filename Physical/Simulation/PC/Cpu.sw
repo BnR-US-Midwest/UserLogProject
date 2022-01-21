@@ -14,7 +14,9 @@
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
-  <TaskClass Name="Cyclic#8" />
+  <TaskClass Name="Cyclic#8">
+    <Task Name="WebLog" Source="WebLog.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+  </TaskClass>
   <Binaries>
     <BinaryObject Name="FWRules" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="TCData" Source="" Memory="SystemROM" Language="Binary" />

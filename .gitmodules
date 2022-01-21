@@ -4,3 +4,9 @@
 [submodule "Logical/Libraries/IecString"]
 	path = Logical/Libraries/IecString
 	url = ssh://git@ssh.github.com:443/tmatijevich/IecString.git
+[submodule "Logical/User/web/log"]
+	path = Logical/User/web/log
+	url = ssh://git@ssh.github.com:443/tmatijevich/weblogclient.git
+[submodule "Logical/WebLog"]
+	path = Logical/WebLog
+	url = ssh://git@ssh.github.com:443/tmatijevich/weblog.git

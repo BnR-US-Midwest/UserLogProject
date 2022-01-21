@@ -8,5 +8,7 @@
     <Object Type="Program" Language="IEC" Description="Sample usages">Sample</Object>
     <Object Type="Program" Language="IEC" Description="Cyclic testing">Test</Object>
     <Object Type="Program" Language="ANSIC" Description="cstring testing">String</Object>
+    <Object Type="Program" Language="ANSIC">WebLog</Object>
+    <Object Type="Package">User</Object>
   </Objects>
 </Package>

@@ -3,10 +3,12 @@
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
   <Module Name="PC" Type="PC_any" Version="1.1.1.0" OrderNumber="PC">
     <Parameter ID="ConfigurationID" Value="UserLogPrj_Simulation" />
+    <Parameter ID="UserPartitionSize" Value="200" />
     <Parameter ID="UserLoggerSize" Value="1024000" />
     <Parameter ID="SystemTick" Value="1000" />
     <Parameter ID="TaskClassIdleTime" Value="10000" />
     <Parameter ID="Cyclic1Duration" Value="10000" />
     <Parameter ID="Cyclic1Tolerance" Value="0" />
+    <Parameter ID="Cyclic8Duration" Value="10000" />
   </Module>
 </Hardware>
