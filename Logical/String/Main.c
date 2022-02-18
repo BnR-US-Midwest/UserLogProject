@@ -15,7 +15,9 @@ void _INIT ProgramInit(void)
 	memcpy(mem1, str1, sizeof(mem1));
 	memcpy(mem2, str2, sizeof(mem2));
 	
-	LogMessage(USERLOG_SEVERITY_SUCCESS, 1234, "Hello World!", &formatArgs);
+	LogMessage(USERLOG_SEVERITY_SUCCESS, 1234, "Hello World!");
+	
+	LogMessage(USERLOG_SEVERITY_CRITICAL, 456, NULL);
 }
 
 void _CYCLIC ProgramCyclic(void)

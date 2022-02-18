@@ -2,6 +2,7 @@ VAR
 	CmdWrite : BOOL;
 	LogInfo : UserLogInfoType;
 	InitReturn : DINT;
+	InitReturn2 : DINT;
 END_VAR
 (*Burst example*)
 VAR

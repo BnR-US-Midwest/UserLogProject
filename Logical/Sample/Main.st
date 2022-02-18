@@ -14,6 +14,7 @@ PROGRAM _INIT
 	MyCode 		:= 1001;
 	
 	InitReturn 	:= CreateCustomLogbook('MyLog', 200_000);
+	InitReturn2	:= CreateCustomLogbook('MyLog2', 200_000);
 
 END_PROGRAM
 
@@ -22,8 +23,8 @@ PROGRAM _CYCLIC
 	// Write a single event to the User and custom logbook
 	IF CmdWrite THEN
 		CmdWrite := FALSE;
-		LogMessage(MySeverity, MyCode, 'This message will be written to the User logbook', FormatArgs);
-		CustomMessage(MySeverity, MyCode, 'This message will be written to the MyLog logbook', FormatArgs, 'MyLog', 1);
+		LogMessage(MySeverity, MyCode, 'This message will be written to the User logbook');
+		CustomMessage(MySeverity, MyCode, 'This message will be written to the MyLog logbook', 'MyLog', 1);
 	END_IF
 	
 	// Write a burst of events to the user logbook. If it exceeds the max count, the events will be lost
@@ -49,7 +50,7 @@ PROGRAM _CYCLIC
 				USERLOG_SEVERITY_DEBUG: 		FormatArgs.s[0] := 'Debug';
 			END_CASE
 			// Log
-			LogMessage(MySeverity, MyCode, 'Event: %i of %i Severity: %s', FormatArgs);
+			LogFormatMessage(MySeverity, MyCode, 'Event: %i of %i Severity: %s', FormatArgs);
 		END_FOR
 	END_IF
 	
