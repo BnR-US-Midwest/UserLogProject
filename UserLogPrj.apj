@@ -2,7 +2,7 @@
 <?AutomationStudio Version="4.9.4.92 SP" WorkingVersion="4.9"?>
 <Project Description="UserLog library development and sample project" Version="1.00.0" Edition="Standard" EditionComment="Standard" xmlns="http://br-automation.co.at/AS/Project">
   <Communication />
-  <ANSIC DefaultIncludes="true" />
+  <ANSIC Declarations="true" DefaultIncludes="true" />
   <IEC ExtendedConstants="true" IecExtendedComments="true" KeywordsAsStructureMembers="false" NamingConventions="true" Pointers="true" Preprocessor="false" />
   <Motion RestartAcoposParameter="true" RestartInitParameter="true" />
   <Project StoreRuntimeInProject="false" />
