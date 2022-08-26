@@ -2,9 +2,10 @@
 <?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
-    <Task Name="Sample" Source="Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Test" Source="Test.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="String" Source="String.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="ANSIC" Source="ANSIC.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Sample" Source="Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
+    <Task Name="Test" Source="Test.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
+    <Task Name="String" Source="String.prg" Memory="UserROM" Language="ANSIC" Debugging="true" Disabled="true" />
     <Task Name="Develop" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <Task Name="EventLog" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </TaskClass>
@@ -15,7 +16,7 @@
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
-    <Task Name="WebLog" Source="WebLog.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="WebLog" Source="WebLog.prg" Memory="UserROM" Language="ANSIC" Debugging="true" Disabled="true" />
   </TaskClass>
   <Binaries>
     <BinaryObject Name="FWRules" Source="" Memory="UserROM" Language="Binary" />
