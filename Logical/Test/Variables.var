@@ -1,8 +1,0 @@
-VAR
-	Test : BOOL;
-	Entries : UINT;
-	Scans : UINT;
-	IndexEntries : UINT;
-	IndexScans : USINT;
-	Args : FormatStringArgumentsType;
-END_VAR

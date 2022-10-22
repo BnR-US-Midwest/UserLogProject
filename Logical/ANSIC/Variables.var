@@ -1,8 +1,23 @@
-
 VAR
-
-END_VAR
-
-VAR CONSTANT
-
+	Logbook : STRING[10];
+	Severity : UserLogSeverityEnum;
+	Facility : UINT;
+	Code : UINT;
+	Origin : ArEventLogRecordIDType;
+	Object : STRING[36];
+	pObject : UDINT;
+	Message : STRING[80];
+	pMessage : UDINT;
+	Arguments : UserLogFormatType;
+	pArguments : UDINT;
+	Test : BOOL;
+	ReturnValue : ArEventLogRecordIDType;
+	Level : UserLogSeverityEnum;
+	TestLoop : BOOL;
+	LoopMax : USINT;
+	Index : USINT;
+	EventID : DINT;
+	GetSeverity : USINT;
+	GetFacility : UINT;
+	GetCode : UINT;
 END_VAR

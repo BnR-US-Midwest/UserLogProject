@@ -2,7 +2,6 @@
 <?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
-    <Task Name="ANSIC" Source="ANSIC.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="Develop" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <Task Name="EventLog" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </TaskClass>
