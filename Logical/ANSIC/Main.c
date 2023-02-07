@@ -25,19 +25,21 @@ void _INIT ProgramInit(void)
 	
 	UserLogCreate("Test", 200000);
 	
-	UserLogQuick(USERLOG_SEVERITY_SUCCESS, Code, "Hello World!");
+	UserLogBasic(USERLOG_SEVERITY_SUCCESS, 1234, "Hello World!");
 	
 	Arguments.i[0] = Code;
-	UserLogFormat(USERLOG_SEVERITY_INFORMATION, Code, "My code is %i", &Arguments);
+	UserLogAdvanced(USERLOG_SEVERITY_INFORMATION, Code, "My code is %i", &Arguments);
 	
 	LoopMax = 5;
+	
+	UserLogEventText("$arlogusr", USERLOG_EXAMPLE_TEXT_ID, 0, NULL, "This is a description of the log record", NULL);
 }
 
 void _CYCLIC ProgramCyclic(void)
 {
 	if(Test) {
 		Test = false;
-		ReturnValue = UserLogMessage(Logbook, Severity, Facility, Code, Origin, (char*)pObject, (char*)pMessage, (UserLogFormatType*)pArguments);
+		ReturnValue = UserLogCustom(Logbook, Severity, Facility, Code, Origin, (char*)pObject, (char*)pMessage, (UserLogFormatType*)pArguments);
 	}
 	UserLogSetSeverityLevel(Level);
 	
@@ -47,7 +49,7 @@ void _CYCLIC ProgramCyclic(void)
 		for (Index = 0; Index < LoopMax; Index++) 
 		{
 			Arguments.i[0] = Index + 1;
-			UserLogMessage(Logbook, Severity, Facility, Code, Origin, (char*)pObject, (char*)pMessage, (UserLogFormatType*)pArguments);
+			UserLogCustom(Logbook, Severity, Facility, Code, Origin, (char*)pObject, (char*)pMessage, (UserLogFormatType*)pArguments);
 		}
 	}
 	
