@@ -1,0 +1,6 @@
+VAR
+	FormatValues : UserLogFormatType;
+	Severity : USINT;
+	Facility : UINT;
+	Code : UINT;
+END_VAR
