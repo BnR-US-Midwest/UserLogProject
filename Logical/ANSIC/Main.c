@@ -21,6 +21,10 @@ void _INIT ProgramInit(void)
 	
 	UserLogEventText("$arlogusr", USERLOG_EXAMPLE_TEXT_ID, 0, NULL, "This is a description of the log record", NULL);
 	
+	FormatValues.i[0] = UserLogSetSeverityLevel(USERLOG_SEVERITY_DEBUG);
+	FormatValues.i[1] = USERLOG_SEVERITY_DEBUG;
+	UserLogAdvanced(USERLOG_SEVERITY_DEBUG, 3, "Default severity level = %i, new severity level = %i", &FormatValues);
+	
 	UserLogSetSeverityLevel(USERLOG_SEVERITY_WARNING);
 	UserLogBasic(USERLOG_SEVERITY_DEBUG, 1, "This is a debug message that will be suppressed");
 	UserLogBasic(USERLOG_SEVERITY_WARNING, 2, "This is a warning message that will not be suppressed");
