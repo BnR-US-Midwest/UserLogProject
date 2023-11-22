@@ -1,0 +1,4 @@
+VAR
+	LogCondition : BOOL;
+	LogValues : UserLogFormatType;
+END_VAR

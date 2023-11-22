@@ -6,5 +6,6 @@
     <Object Type="File">Project.language</Object>
     <Object Type="Program" Language="ANSIC">ANSIC</Object>
     <Object Type="Program" Language="IEC">IECST</Object>
+    <Object Type="Program" Language="IEC">Sample</Object>
   </Objects>
 </Package>
