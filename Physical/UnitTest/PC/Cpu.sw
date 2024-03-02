@@ -4,7 +4,7 @@
   <TaskClass Name="Cyclic#1">
     <Task Name="TestSuite" Source="Source.UnitTest.TestSuite.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="ANSIC" Source="Source.ANSIC.prg" Memory="UserROM" Language="ANSIC" Debugging="true" Disabled="true" />
-    <Task Name="IECST" Source="Source.IECST.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
+    <Task Name="IECST" Source="Source.IECST.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Sample" Source="Source.Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" Disabled="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
@@ -26,7 +26,7 @@
     <BinaryObject Name="sysconf" Source="" Memory="SystemROM" Language="Binary" />
   </Binaries>
   <Libraries>
-    <LibraryObject Name="UserLog" Source="Libraries.UserLog.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <LibraryObject Name="UserLog" Source="Libraries.UserLog.lby" Memory="UserROM" Language="ANSIC" BuildOptions="-D IECSTRING_FORMAT_TYPE_EXTERNAL" Debugging="true" />
     <LibraryObject Name="ArEventLog" Source="Libraries.ArEventLog.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="sys_lib" Source="Libraries.sys_lib.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="astime" Source="Libraries.astime.lby" Memory="UserROM" Language="binary" Debugging="true" />
