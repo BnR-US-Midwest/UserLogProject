@@ -2,7 +2,7 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Physical xmlns="http://br-automation.co.at/AS/Physical">
   <Objects>
-    <Object Type="Configuration" Description="Standard PC simulation">Simulation</Object>
+    <Object Type="Configuration" Description="Standard PC simulation">UnitTest</Object>
     <Object Type="Configuration" Description="Standard PC simulation">Config1</Object>
     <Object Type="Configuration" Description="Standard PC simulation">Config2</Object>
   </Objects>
