@@ -2,8 +2,8 @@
 # Place gitignore file parallel to project (*.apj) file
 # More information at https://git-scm.com/docs/gitignore
 
-# Ignore AR system files
-/AR/System
+# Ignore AS system files
+/AS/System
 # Ignore entire Binaries directory relative to gitignore
 /Binaries
 # Ignore everything inside Diagnosis directory
@@ -17,11 +17,11 @@
 # Ignore upgrade files
 /Upgrades
 
-# Ignore set and isopen files
+# Ignore user set and isopen files
 /*.set
 /*.isopen
 
-# Ignore archives
+# Ignore project archives
 /*.zip
 
 # Ignore logs
@@ -34,3 +34,4 @@
 #!/Diagnosis/**/*.tc
 
 /Release
+/.vscode/settings.json
