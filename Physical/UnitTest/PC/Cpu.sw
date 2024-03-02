@@ -2,6 +2,7 @@
 <?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
+    <Task Name="TestSuite" Source="Source.UnitTest.TestSuite.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="ANSIC" Source="Source.ANSIC.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="IECST" Source="Source.IECST.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Sample" Source="Source.Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
