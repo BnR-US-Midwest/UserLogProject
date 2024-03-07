@@ -13,7 +13,9 @@
                 "_UNICODE",
                 "_SG4",
                 "_REPLACE_CONST",
-                "_DEFAULT_INCLUDES"
+                "_DEFAULT_INCLUDES",
+                "IECSTRING_HEADER_EXPLICIT",
+                "IECSTRING_FORMAT_TYPE_EXTERNAL"
             ],
             "compilerPath": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
             "cStandard": "c17",
