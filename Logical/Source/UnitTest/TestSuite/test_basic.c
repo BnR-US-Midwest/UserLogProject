@@ -9,6 +9,16 @@
 #define SAMPLE_MESSAGE "Hello World!"
 #define LOGBOOK_USER "$arlogusr"
 
+#define GET_IDENT ArEventLogGetIdent_typ get_ident = {{0}}; \
+strcpy(get_ident.Name, LOGBOOK_USER); \
+get_ident.Execute = true; \
+ArEventLogGetIdent(&get_ident); \
+if (get_ident.StatusID) \
+{ \
+    TEST_FAIL("ArEventLogGetIdent error"); \
+    TEST_DONE; \
+}
+
 _TEST test_basic_severity_success(void)
 {
     /* Perform test */
@@ -17,16 +27,7 @@ _TEST test_basic_severity_success(void)
                           SAMPLE_MESSAGE);
 
     /* Read details from logbook synchronously */
-    /* Get logbook identifier */
-    ArEventLogGetIdent_typ get_ident = {{0}};
-    strcpy(get_ident.Name, LOGBOOK_USER);
-    get_ident.Execute = true;
-    ArEventLogGetIdent(&get_ident);
-    if (get_ident.StatusID)
-    {
-        TEST_FAIL("ArEventLogGetIdent error");
-        TEST_DONE;
-    }
+    GET_IDENT
 
     /* Get latest record */
     ArEventLogGetLatestRecordID_typ get_latest_record = {0};
