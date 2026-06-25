@@ -220,7 +220,7 @@ void UNTITTEST_TESTSET_HANDLER();
 #endif
 
 
-#define UNIT_TEST_LIBRARY_VERSION  			"2.01.0"
+#define UNIT_TEST_LIBRARY_VERSION  			"2.02.0"
 
 
 #ifdef __cplusplus
