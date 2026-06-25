@@ -22,6 +22,7 @@
   </Binaries>
   <Libraries>
     <LibraryObject Name="UserLog" Source="Libraries.UserLog.lby" Memory="UserROM" Language="ANSIC" BuildOptions="-D IECSTRING_HEADER_EXPLICIT -D IECSTRING_FORMAT_TYPE_EXTERNAL" Debugging="false" />
+    <LibraryObject Name="IecString" Source="Libraries.IecString.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="ArEventLog" Source="Libraries.ArEventLog.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="sys_lib" Source="Libraries.sys_lib.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="astime" Source="Libraries.astime.lby" Memory="UserROM" Language="binary" Debugging="true" />

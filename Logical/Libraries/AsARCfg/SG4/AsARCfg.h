@@ -53,6 +53,7 @@ extern "C"
  #define cfgETHBAUDRATE_10FD 11U
  #define cfgETHBAUDRATE_10 10U
  #define cfgETHBAUDRATE_AUTO 0U
+ #define cfgERR_PORT_INVALID 29036U
  #define cfgERR_DST 29035U
  #define cfgERR_ROUTE_TABLE 29034U
  #define cfgERR_NTP_CLIENT 29033U
@@ -129,6 +130,7 @@ extern "C"
  _GLOBAL_CONST unsigned long cfgETHBAUDRATE_10FD;
  _GLOBAL_CONST unsigned long cfgETHBAUDRATE_10;
  _GLOBAL_CONST unsigned long cfgETHBAUDRATE_AUTO;
+ _GLOBAL_CONST unsigned short cfgERR_PORT_INVALID;
  _GLOBAL_CONST unsigned short cfgERR_DST;
  _GLOBAL_CONST unsigned short cfgERR_ROUTE_TABLE;
  _GLOBAL_CONST unsigned short cfgERR_NTP_CLIENT;
@@ -527,6 +529,62 @@ typedef struct CfgSetFTPServer
 	/* VAR_INPUT (digital) */
 	plcbit enable;
 } CfgSetFTPServer_typ;
+
+typedef struct CfgGetFTPServerPort
+{
+	/* VAR_OUTPUT (analog) */
+	unsigned short status;
+	unsigned short port;
+	/* VAR (analog) */
+	unsigned short i_state;
+	unsigned short i_result;
+	unsigned long i_tmp;
+	/* VAR_INPUT (digital) */
+	plcbit enable;
+} CfgGetFTPServerPort_typ;
+
+typedef struct CfgSetFTPServerPort
+{
+	/* VAR_INPUT (analog) */
+	unsigned short port;
+	unsigned long option;
+	/* VAR_OUTPUT (analog) */
+	unsigned short status;
+	/* VAR (analog) */
+	unsigned short i_state;
+	unsigned short i_result;
+	unsigned long i_tmp;
+	/* VAR_INPUT (digital) */
+	plcbit enable;
+} CfgSetFTPServerPort_typ;
+
+typedef struct CfgGetFTPServerBaseDataPort
+{
+	/* VAR_OUTPUT (analog) */
+	unsigned short status;
+	unsigned short port;
+	/* VAR (analog) */
+	unsigned short i_state;
+	unsigned short i_result;
+	unsigned long i_tmp;
+	/* VAR_INPUT (digital) */
+	plcbit enable;
+} CfgGetFTPServerBaseDataPort_typ;
+
+typedef struct CfgSetFTPServerBaseDataPort
+{
+	/* VAR_INPUT (analog) */
+	unsigned short port;
+	unsigned long option;
+	/* VAR_OUTPUT (analog) */
+	unsigned short status;
+	/* VAR (analog) */
+	unsigned short i_state;
+	unsigned short i_result;
+	unsigned long i_tmp;
+	/* VAR_INPUT (digital) */
+	plcbit enable;
+} CfgSetFTPServerBaseDataPort_typ;
 
 typedef struct CfgGetTimeOffset
 {
@@ -1175,6 +1233,25 @@ typedef struct CfgSetWebServerStatus
 	plcbit enable;
 } CfgSetWebServerStatus_typ;
 
+typedef struct CfgSetDns
+{
+	/* VAR_INPUT (analog) */
+	unsigned short mode;
+	unsigned long pSuffix;
+	unsigned long pDnsAddr1;
+	unsigned long pDnsAddr2;
+	unsigned long pDnsAddr3;
+	unsigned long option;
+	/* VAR_OUTPUT (analog) */
+	unsigned short status;
+	/* VAR (analog) */
+	unsigned short i_state;
+	unsigned short i_result;
+	unsigned long i_tmp;
+	/* VAR_INPUT (digital) */
+	plcbit enable;
+} CfgSetDns_typ;
+
 typedef struct CfgGetDnsMode
 {
 	/* VAR_OUTPUT (analog) */
@@ -1323,6 +1400,10 @@ _BUR_PUBLIC void CfgGetHostNameIf(struct CfgGetHostNameIf* inst);
 _BUR_PUBLIC void CfgSetHostNameIf(struct CfgSetHostNameIf* inst);
 _BUR_PUBLIC void CfgGetMacAddr(struct CfgGetMacAddr* inst);
 _BUR_PUBLIC void CfgSetFTPServer(struct CfgSetFTPServer* inst);
+_BUR_PUBLIC void CfgGetFTPServerPort(struct CfgGetFTPServerPort* inst);
+_BUR_PUBLIC void CfgSetFTPServerPort(struct CfgSetFTPServerPort* inst);
+_BUR_PUBLIC void CfgGetFTPServerBaseDataPort(struct CfgGetFTPServerBaseDataPort* inst);
+_BUR_PUBLIC void CfgSetFTPServerBaseDataPort(struct CfgSetFTPServerBaseDataPort* inst);
 _BUR_PUBLIC void CfgGetTimeOffset(struct CfgGetTimeOffset* inst);
 _BUR_PUBLIC void CfgSetTimeOffset(struct CfgSetTimeOffset* inst);
 _BUR_PUBLIC void CfgSetSntpServer(struct CfgSetSntpServer* inst);
@@ -1364,6 +1445,7 @@ _BUR_PUBLIC void CfgGetWebAspGoform(struct CfgGetWebAspGoform* inst);
 _BUR_PUBLIC void CfgSetWebAspGoform(struct CfgSetWebAspGoform* inst);
 _BUR_PUBLIC void CfgGetWebServerStatus(struct CfgGetWebServerStatus* inst);
 _BUR_PUBLIC void CfgSetWebServerStatus(struct CfgSetWebServerStatus* inst);
+_BUR_PUBLIC void CfgSetDns(struct CfgSetDns* inst);
 _BUR_PUBLIC void CfgGetDnsMode(struct CfgGetDnsMode* inst);
 _BUR_PUBLIC void CfgSetDnsMode(struct CfgSetDnsMode* inst);
 _BUR_PUBLIC void CfgGetDnsSuffix(struct CfgGetDnsSuffix* inst);

@@ -36,6 +36,7 @@ VAR CONSTANT
 	cfgERR_NTP_CLIENT 				: UINT		:= 29033;	(*error starting NTP client*)
 	cfgERR_ROUTE_TABLE				: UINT		:= 29034;	(*error updating network routing table*)
 	cfgERR_DST						: UINT		:= 29035;	(*could not enable or disable automatic daylight saving*)
+	cfgERR_PORT_INVALID             : UINT      := 29036;   (*FBK "port" parameter invalid*)
 
 	cfgETHBAUDRATE_AUTO				: UDINT		:= 0;		(*auto-detect*)
 	cfgETHBAUDRATE_10				: UDINT		:= 10;		(*10 MBaud, half-duplex*)

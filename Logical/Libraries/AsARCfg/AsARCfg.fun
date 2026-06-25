@@ -413,6 +413,76 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetFTPServerPort			(*gets the FTP server port; asynchronous execution*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
+		port            : UINT;			(*FTP server port*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetFTPServerPort			(*sets the FTP server port; asynchronous execution*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		port            : UINT;			(*FTP server port*)
+		option			: UDINT;		(*options: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetFTPServerBaseDataPort			(*gets the FTP server base data port; asynchronous execution*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
+		port			: UINT;         (*FTP base data port, if using passive FTP*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetFTPServerBaseDataPort			(*sets the FTP server base data port; asynchronous execution*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		port			: UINT;         (*FTP base data port, if using passive FTP*)
+		option			: UDINT;		(*options: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
 {REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetTimeOffset			(*returns the configured time offset; asynchronous execution*)
 	VAR_INPUT
 		enable			: BOOL;			(*enables execution*)
@@ -1195,6 +1265,28 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetDns	(*All-in-one FB to configure and run DNS service with Volatile/Non-Volatile option; asynchronous execution*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		mode			: UINT;			(*cfgOPTION_DNS_ON_CONFIG (1) or cfgOPTION_DNS_ON_DHCP (2)*)
+		pSuffix			: UDINT;		(*pointer to a string with the DNS suffix*)
+		pDnsAddr1		: UDINT;		(*First DNS Server address given as pointer, valid range "1.0.0.1" - "247.255.255.255"*)
+		pDnsAddr2		: UDINT;		(*Second DNS Server address given as pointer, valid range "1.0.0.1" - "247.255.255.255"*)
+		pDnsAddr3		: UDINT;		(*Third DNS Server address given as pointer, valid range "1.0.0.1" - "247.255.255.255"*)
+		option			: UDINT;		(*options: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
 {REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetDnsMode		(*returns whether the DNS service is active and using DHCP; asynchronous execution*)
 	VAR_INPUT
 		enable			: BOOL;			(*enables execution*)
@@ -1215,7 +1307,7 @@ END_FUNCTION_BLOCK
 {REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetDnsMode	(*Activate or deactivate the DNS service, get server address from configuration or from DHCP; asynchronous execution*)
 	VAR_INPUT
 		enable			: BOOL;			(*enables execution*)
-		mode			: UINT;			(*cfgOPTION_DNS_OFF (0) or cfgOPTION_DNS_ON_CONFIG (1) or cfgOPTION_DNS_ON_DHCP (2)*)
+		mode			: UINT;			(*cfgOPTION_DNS_ON_CONFIG (1) or cfgOPTION_DNS_ON_DHCP (2)*)
 	END_VAR
 
 	VAR_OUTPUT
