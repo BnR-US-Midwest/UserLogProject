@@ -5,5 +5,6 @@
     <File Description="Init, cyclic, exit code">main.c</File>
     <File Description="Set fixtures">load.c</File>
     <File Description="Test UserLogBasic">test_basic.c</File>
+    <File Description="Test UserLogEventText">test_event_text.c</File>
   </Files>
 </Program>

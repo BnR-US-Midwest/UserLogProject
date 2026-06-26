@@ -15,12 +15,11 @@ void _INIT ProgramInit(void)
 	FormatValues.i[0] = -1070586087;
 	strcpy(FormatValues.s[0], "Starting");
 	UserLogAdvanced(USERLOG_SEVERITY_INFORMATION, 567, "Error=%b, Temperature=%f C, StatusID=%i, State=%s", &FormatValues);
+    UserLogEventText("$arlogusr", USERLOG_EXAMPLE_TEXT_ID, 0, NULL, "%b %f %if %s", &FormatValues);
 	
 	UserLogCreate("Custom", 200000);
 	UserLogCustom("Custom", USERLOG_SEVERITY_WARNING, 25, 789, 0, NULL, "This message is written to the Custom logbook", NULL);
-	
-	UserLogEventText("$arlogusr", USERLOG_EXAMPLE_TEXT_ID, 0, NULL, "This is a description of the log record", NULL);
-	
+    
 	FormatValues.i[0] = UserLogSetSeverityLevel(USERLOG_SEVERITY_DEBUG);
 	FormatValues.i[1] = USERLOG_SEVERITY_DEBUG;
 	UserLogAdvanced(USERLOG_SEVERITY_DEBUG, 3, "Default severity level = %i, new severity level = %i", &FormatValues);
