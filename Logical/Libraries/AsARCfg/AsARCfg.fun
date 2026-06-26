@@ -210,25 +210,6 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetBroadcastAddr		(*enters broadcast address into the AR registry for Ethernet device; asynchronous execution*)
-	VAR_INPUT
-		enable			: BOOL;			(*enables execution*)
-		pDevice			: UDINT;		(*INA device name given as pointer (syntax: SL<x>.SS<y>.IF<z>)*)
-		pBroadcastAddr	: UDINT;		(*broadcast address given as a pointer, valid range "1.0.0.1" - "255.255.255.255"*)
-		Option			: UDINT;		(*options: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
-	END_VAR
-
-	VAR_OUTPUT
-		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
-	END_VAR
-
-	VAR
-        i_state			: UINT;			(*internal variable*)
-		i_result		: UINT;			(*internal variable*)
-        i_tmp			: UDINT;		(*internal variable*)
-	END_VAR
-END_FUNCTION_BLOCK
-
 {REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetEthBaudrate		(*reads the baud rate from the AR registry for Ethernet device; asynchronous execution*)
 	VAR_INPUT
 		enable			: BOOL;			(*enables execution*)
@@ -509,84 +490,6 @@ END_FUNCTION_BLOCK
 
 	VAR_OUTPUT
         status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
-	END_VAR
-
-	VAR
-        i_state			: UINT;			(*internal variable*)
-		i_result		: UINT;			(*internal variable*)
-        i_tmp			: UDINT;		(*internal variable*)
-	END_VAR
-END_FUNCTION_BLOCK
-
-{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetSntpServer			(*starts the SNTP server; asynchronous execution*)
-	VAR_INPUT
-		enable			: BOOL;			(*enables execution*)
-        start			: UDINT;		(*1 Starts the SNTP server*)
-        option			: UDINT;		(*Options: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
-	END_VAR
-
-	VAR_OUTPUT
-        status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
-	END_VAR
-
-	VAR
-        i_state			: UINT;			(*internal variable*)
-		i_result		: UINT;			(*internal variable*)
-        i_tmp			: UDINT;		(*internal variable*)
-	END_VAR
-END_FUNCTION_BLOCK
-
-{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetSntpClient			(*starts and stops the SNTP client; asynchronous execution*)
-	VAR_INPUT
-		enable			: BOOL;			(*enables execution*)
-		run				: UDINT;		(*0 stop client, 1 start client*)
-		pServerAddr		: UDINT;		(*pointer to a string with the IP address of the SNTP server*)
-		sntpcInterval	: UINT;			(*interval in minutes that it takes for the SNTP client to synchronize the time with the server*)
-		rtcInterval		: UINT;			(*interval in minutes that it takes to synchronize the RTC with the software time during SNTP operation*)
-		option			: UDINT;		(*options: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
-	END_VAR
-
-	VAR_OUTPUT
-		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
-		syncStatus		: USINT;		(*0 Client not active, 1 Client already active, but time not received from server, ...*)
-	END_VAR
-
-	VAR
-        i_state			: UINT;			(*internal variable*)
-		i_result		: UINT;			(*internal variable*)
-        i_tmp			: UDINT;		(*internal variable*)
-	END_VAR
-END_FUNCTION_BLOCK
-
-{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetSntpcData			(*returns the parameters relevant for the SNTP client; asynchronous execution*)
-	VAR_INPUT
-		enable			: BOOL;			(*enables execution*)
-		pServerAddr		: UDINT;		(*pointer to a long enough string to contain the server address or server name*)
-		Len				: USINT;		(*length of the string (pServerAddr)*)
-	END_VAR
-
-	VAR_OUTPUT
-		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
-		run				: UDINT;		(*1 Client active, 0 Client inactive*)
-        sntpcInterval	: UINT;			(*interval that it takes for the SNTP client to synchronize the time with the server*)
-        rtcInterval		: UINT;			(*interval that it take to synchronize the RTC with the software time during SNTP operation*)
-	END_VAR
-
-	VAR
-        i_state			: UINT;			(*internal variable*)
-		i_result		: UINT;			(*internal variable*)
-        i_tmp			: UDINT;		(*internal variable*)
-	END_VAR
-END_FUNCTION_BLOCK
-
-{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetSntpsData			(*returns whether the SNTP server is active; asynchronous execution*)
-	VAR_INPUT
-		enable			: BOOL;			(*enables execution*)
-	END_VAR
-
-	VAR_OUTPUT
-		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, 0xXXXX = see help*)
-		run				: UDINT;		(*1 server active, 0 server inactive*)
 	END_VAR
 
 	VAR
@@ -1426,6 +1329,103 @@ END_FUNCTION_BLOCK
 
 	VAR_OUTPUT
 		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetSnmpMode	(*Activate or deactivate the SNMP service*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		pDevice			: UDINT;		(*Devicename given as a pointer*)
+		mode			: UINT;			(*SNMP mode to be set: cfgSNMP_MODE_DISABLED, cfgSNMP_MODE_READ_ONLY, cfgSNMP_MODE_READ_WRITE, cfgSNMP_MODE_READ_ONLY_SECURE, cfgSNMP_MODE_READ_WRITE_SECURE *)
+		option			: UDINT;		(*persistency properties: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetSnmpMode	(*Get current state of SNMP service*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		pDevice			: UDINT;		(*Devicename given as a pointer*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
+		mode			: UINT;			(*currently set SNMP mode: cfgSNMP_MODE_DISABLED, cfgSNMP_MODE_READ_ONLY, cfgSNMP_MODE_READ_WRITE, cfgSNMP_MODE_READ_ONLY_SECURE, cfgSNMP_MODE_READ_WRITE_SECURE*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetSnmpCredentials (*Sets credentials for SNMP service*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		pDevice			: UDINT;		(*device name given as a pointer*)
+		pUserName		: UDINT;		(*user name given as pointer*)
+		pAuthPassphrase : UDINT;		(*authentication passphrase given as pointer*)
+		pPrivPassphrase : UDINT;		(*private passphrase given as pointer*)
+		option			: UDINT;		(*persistency properties: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgSetNetworkInstallMode	(*Activate or deactivate the network installation service*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		pDevice			: UDINT;		(*Devicename given as a pointer*)
+		netInstEnable	: BOOL;			(*network installation enable or disable*)
+		netInstTimeout	: UDINT;		(*network installation timeout [seconds] to wait for a response from the DHCP server, if 0 the default timeout (30s) is used*)
+		option			: UDINT;		(*persistency properties: cfgOPTION_VOLATILE, cfgOPTION_NON_VOLATILE*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
+	END_VAR
+
+	VAR
+        i_state			: UINT;			(*internal variable*)
+		i_result		: UINT;			(*internal variable*)
+        i_tmp			: UDINT;		(*internal variable*)
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_CONTEXT} {REDUND_UNREPLICABLE} FUNCTION_BLOCK CfgGetNetworkInstallMode	(*Get current status of network installation service*)
+	VAR_INPUT
+		enable			: BOOL;			(*enables execution*)
+		pDevice			: UDINT;		(*Devicename given as a pointer*)
+	END_VAR
+
+	VAR_OUTPUT
+		status			: UINT;			(*execution status: ERR_OK, ERR_FUB_ENABLE_FALSE, ERR_FUB_BUSY, 0xXXXX = see help*)
+		netInstEnabled	: BOOL;			(*network installation enabled or disabled*)
+		netInstTimeout	: UDINT;		(*network installation timeout [seconds] to wait for a response from the DHCP server*)
 	END_VAR
 
 	VAR

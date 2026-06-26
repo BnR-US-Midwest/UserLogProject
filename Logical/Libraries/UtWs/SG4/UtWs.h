@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* UtWs 2.02.0 */
+/* UtWs 6.5.0 */
 
 #ifndef _UTWS_
 #define _UTWS_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _UtWs_VERSION
-#define _UtWs_VERSION 2.02.0
+#define _UtWs_VERSION 6.5.0
 #endif
 
 #include <bur/plctypes.h>
